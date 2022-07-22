@@ -3,17 +3,18 @@
         .title{
             padding-bottom : 20px;
         }
-    .property-info{
-    
+    .card{
+    width: 100%;
      display: flex;
      justify-content: space-between;    
-        .property-img{
-            width: 100%;
-           
+        .property-img-details{
+            width: 400px;
+            border: 1px solid lightgray;
             .bedroom-img{
-                width: 400px;
+                width: 100%;
                 height: 200px;
             }
+         
         }
     }
     }
