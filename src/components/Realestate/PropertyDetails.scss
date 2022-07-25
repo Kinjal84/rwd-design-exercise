@@ -8,7 +8,8 @@
      display: flex;
      justify-content: space-between;    
         .property-img-details{
-            width: 400px;
+            width: 32%;
+            // max-width: 420px;
             border: 1px solid lightgray;
             .bedroom-img{
                 width: 100%;
