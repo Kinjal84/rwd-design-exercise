@@ -41,9 +41,7 @@ const Property = () => {
         <div className='hero'>
             <div className='container'>
                 <div className='title'>
-                    <h3 className='font--size-md'>
-                        Australia's best investment property deals
-                    </h3>
+                    <h3>Australia's best investment property deals</h3>
                 </div>
                 <div className='card flex justify--content_space-between'>
                     {propertyDetails.information.map((info) => (
@@ -53,28 +51,30 @@ const Property = () => {
                                 alt='bedroom'
                                 className='bedroom-img'></img>
                             <div className='property-info p--10'>
-                                <div>
+                                <div className='property-name'>
                                     <h4>{info.title}</h4>
                                 </div>
-                                <div>
+                                <div className='property-address'>
                                     <p>{info.place}</p>
                                 </div>
                                 <div className='flex justify--content_space-between'>
                                     <div className='flex'>
-                                        <div className='p--10'>
-                                            <FaBed />
+                                        <div className='property-small-intro p--10'>
+                                            <FaBed className='property-info-icons' />
                                             {info.bedcount}
                                         </div>
-                                        <div className='p--10'>
-                                            <FaBath />
+                                        <div className='p--10 property-small-intro'>
+                                            <FaBath className='property-info-icons' />
                                             {info.bath}
                                         </div>
-                                        <div className='p--10'>
-                                            <FaCar />
+                                        <div className='p--10 property-small-intro'>
+                                            <FaCar className='property-info-icons' />
                                             {info.car}
                                         </div>
                                     </div>
-                                    <div>Apartment</div>
+                                    <div className='appartments'>
+                                        Apartments
+                                    </div>
                                 </div>
                             </div>
                         </div>

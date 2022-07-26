@@ -4,51 +4,6 @@
     box-sizing: border-box;
 }
 
-.main{
-    margin: 0;
-    padding: 0;
-    .header{
-       
-        .inner-header{
-            width: 100%;
-            
-            padding: 20px;
-        .logo{
-            width: 10%;
-            display: flex;
-            .logo-img{
-                width: 100%;
-                max-width: 100px;
-
-            }
-        }
-        .navbar{
-            width: 80%;
-        
-        
-            .nav-links{
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                color: gray;
-                .navigation-links{
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                }
-            }
-        }
-        .sign-in{
-            width: 10%;
-            display: flex;
-            justify-content: flex-end;
-            color: gray;
-        }
-    }
-}
-}
-
-
 
 .container{
     width: 100%;
@@ -76,3 +31,111 @@
     padding: 10px;
 }
 
+.d--none{
+    display: none;
+}
+
+
+
+.main{
+    margin: 0;
+    padding: 0;
+    .header{
+       
+        .inner-header{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            border-bottom: 2px solid black;
+            padding: 10px;
+            .humburg-menu{
+                display: none;
+            }
+        .logo{
+            padding: 10px 20px;
+            box-sizing: border-box;
+            display: flex;
+            .logo-img{
+                width: 100%;
+                max-width: 100px;
+
+            }
+        }
+        .navbar{
+            width: 80%;
+        
+        
+            .nav-links{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                color: gray;
+                .navigation-links{
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                }
+            }
+        }
+        .profile-icon{
+            display: none;
+            font-size: 20px;
+            color: gray;
+        }
+        .sign-in{
+            width: 10%;
+            display: flex;
+            justify-content: flex-end;
+            color: gray;
+        }
+    }
+}
+}
+
+@media screen and (max-width: 768px){
+        .inner-header{
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 30px !important;
+        }
+    
+        .humburg-menu{
+            display: block !important;
+        }
+        .logo{
+          padding: 0px !important;
+        }
+       .sign-in{
+        display: none !important;
+       }
+       .profile-icon{
+        display: block !important;
+       }
+        .navbar{
+            display: none;
+        }
+      
+    }
+
+    @media screen and (max-width: 320px){
+        .logo{
+            width: 100%;
+           text-align: center;
+         display: flex;
+         justify-content: center !important;
+        }
+        .humburg-menu {
+            display: none !important;
+        }
+        .sign-in{
+            display: none !important;
+        }
+    }
+    @media screen and (max-width: 375px){
+        .humburg-menu {
+            display: none !important;
+        }
+        .sign-in{
+            display: none !important;
+        }
+    }
