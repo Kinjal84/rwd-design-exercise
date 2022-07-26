@@ -3,7 +3,7 @@ import '../PrimaryForm/PrimaryForm.scss';
 import { useForm } from 'react-hook-form';
 
 export default function Form() {
-    const [selectedCountry, setSelectedCountry] = useState({});
+    const [selectedCountry, setSelectedCountry] = useState('');
     const [selectedState, setSelectedState] = useState();
     const country = [
         {
@@ -86,7 +86,7 @@ export default function Form() {
     const onSubmit = (data, e) => {
         console.log(data);
 
-        // e.target.reset();
+        e.target.reset();
     };
 
     const handleChange = (event) => {
@@ -136,7 +136,7 @@ export default function Form() {
                                     'Name should have at list 3 charactor'}
                             </error>
                             <select
-                                {...register('country')}
+                                {...register('country', { required: true })}
                                 className='form-control'
                                 onChange={handleChange}
                                 value={selectedCountry}

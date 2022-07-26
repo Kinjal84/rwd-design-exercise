@@ -1,13 +1,13 @@
 .primary-form{
+    width: 100%;
+       max-width: 1440px;
+       margin: 0 auto;
     
     .container{
-        width: 100%;
-       
+       width: 100%;
         text-align: center;
-      
-        
+
             form{
-                
                 display: flex;
                 justify-content: space-between;
                 flex-direction: column;
@@ -80,5 +80,25 @@
 @media screen and (max-width: 768px){
     .container{
         width: 100% !important; 
+    
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .container{
+        
+        form{
+            .forms{
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                .form1{
+                    width: 100% !important;
+                }
+                .form2{
+                    width: 100% !important;
+                }
+            }
+        }
     }
 }

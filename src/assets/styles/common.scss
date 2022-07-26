@@ -5,6 +5,8 @@
 }
 
 
+
+
 .container{
     width: 100%;
     padding: 20px;
@@ -15,17 +17,21 @@
 .justify--content_space-between{
     justify-content: space-between;
 }
+.align--items_center{
+    align-items: center;
+}
+
 .m--0-auto{
     margin: 0 auto;
-}
+}    
 
 .li--style-none{
     list-style-type: none;
-}
+}    
 
 .font--size-md{
     font-size: 28px;
-}
+}    
 
 .p--10{
     padding: 10px;
@@ -34,6 +40,9 @@
 .d--none{
     display: none;
 }
+.d--block{
+    display: block;
+}
 
 
 
@@ -41,23 +50,24 @@
     margin: 0;
     padding: 0;
     .header{
-       
+       width: 100%;
+       max-width: 1440px;
+       margin: 0 auto;
         .inner-header{
             width: 100%;
             display: flex;
             align-items: center;
-            border-bottom: 2px solid black;
             padding: 10px;
             .humburg-menu{
                 display: none;
             }
         .logo{
+           width: 160px;
             padding: 10px 20px;
             box-sizing: border-box;
             display: flex;
             .logo-img{
                 width: 100%;
-                max-width: 100px;
 
             }
         }
@@ -83,7 +93,7 @@
             color: gray;
         }
         .sign-in{
-            width: 10%;
+            width: 15%;
             display: flex;
             justify-content: flex-end;
             color: gray;
@@ -92,24 +102,94 @@
 }
 }
 
+
+
+
+.sidebar{
+    width: 100%;
+    min-height: 100vh;
+    box-shadow: 0px 4px 8px rgb(0 0 0 / 16%);
+    background-color: #fff;
+    position: fixed;
+    top: 0%;
+    left: -100%;
+    z-index: 1;
+    transition: 0.5s;
+   
+}
+.sidebar.active{
+    left: 0;
+}
+.sd-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+}
+
+.close-btn{
+    font-size: 24px;
+    color: rgb(221, 108, 42);
+}
+
+.services{
+    border-bottom: 0.5px solid gray;
+}
+.services-list{
+    display: flex;
+    flex-direction: column;
+}
+
+.others{
+    padding: 20px;
+    color: gray;
+}
+
+.other-links{
+    padding: 9px 5px;
+}
+
+.link--list{
+    padding: 10px;
+    display: flex;
+    width: 100%;
+    color: gray;
+    font-size: 18px;
+}
+.home-icon{
+    padding: 0px 15px;
+    // width: 100%;
+}
+
+
+
 @media screen and (max-width: 768px){
         .inner-header{
             display: flex;
             justify-content: space-between;
+            align-items: center;
             padding: 10px 30px !important;
+            border: 1px solid lightgray;
         }
     
         .humburg-menu{
             display: block !important;
         }
         .logo{
+            width: 100px !important;
           padding: 0px !important;
+
+        }
+        .logo-img{
+            width: 100%;
         }
        .sign-in{
         display: none !important;
        }
        .profile-icon{
         display: block !important;
+        font-size: 24px;
+            color: gray;
        }
         .navbar{
             display: none;

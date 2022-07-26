@@ -57,7 +57,7 @@ const Property = () => {
                                 <div className='property-address'>
                                     <p>{info.place}</p>
                                 </div>
-                                <div className='flex justify--content_space-between'>
+                                <div className='flex justify--content_space-between align--items_center'>
                                     <div className='flex'>
                                         <div className='property-small-intro p--10'>
                                             <FaBed className='property-info-icons' />
