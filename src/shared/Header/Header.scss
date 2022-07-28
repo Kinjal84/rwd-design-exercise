@@ -14,11 +14,12 @@
                 display: none;
                 color: orange;
                 font-size: 24px;
+                cursor: pointer;
             }
             
         .logo{
-           width: 160px;
-            padding: 10px 20px;
+           width: 165px;
+            padding: 10px 30px;
             box-sizing: border-box;
             display: flex;
             .logo-img{
@@ -50,7 +51,7 @@
             cursor: pointer;
         }
         .sign-in{
-            width: 15%;
+            width: 12%;
             display: flex;
             justify-content: flex-end;
             color: gray;

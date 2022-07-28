@@ -4,8 +4,8 @@ import { useForm } from 'react-hook-form';
 
 export default function Form() {
     const [selectedCountry, setSelectedCountry] = useState();
-    const [isOff, setIsOff] = useState(false);
-    const [isMobile, setIsMobile] = useState(false);
+    const [isOff, setIsOff] = useState(true);
+    const [isMobile, setIsMobile] = useState(true);
     // const [countryId, setCountryId] = useState(null);
 
     const country = [
@@ -98,13 +98,12 @@ export default function Form() {
     };
 
     const onChangeHandler = (event) => {
+        const value = event.target.value;
+        setSelectedCountry(value);
+
         // const index = e.target.selectedIndex;
         // const el = e.target.childNodes[index];
         // const option = el.getAttribute('id');
-        const value = event.target.value;
-        console.log(value);
-        setSelectedCountry(value);
-        // console.log(selectedCountry);
         // console.log(option);
     };
     const availableState = State.filter((c) => c.country_id == selectedCountry);
@@ -119,7 +118,6 @@ export default function Form() {
                                 <h3>Primary Form</h3>
                             </div>
 
-                            {/* <div className='form-control'> */}
                             <input
                                 placeholder='First Name'
                                 className='form-control'
@@ -135,7 +133,7 @@ export default function Form() {
                                 {errors.name?.type === 'minLength' &&
                                     'Name should have at list 3 charactor !'}
                             </p>
-                            {/* </div> */}
+
                             <input
                                 placeholder='Last Name'
                                 className='form-control'
@@ -155,11 +153,7 @@ export default function Form() {
                                 {...register('country', { required: true })}
                                 className='form-control'
                                 onChange={onChangeHandler}>
-                                <option
-                                    className='placeholder'
-                                    disabled
-                                    selected
-                                    value=''>
+                                <option className='placeholder' value=''>
                                     Select country
                                 </option>
                                 {country.map((country) => (
@@ -257,11 +251,7 @@ export default function Form() {
                                     name='state'
                                     className='form-control'
                                     {...register('state', { required: true })}>
-                                    <option
-                                        className='placeholder'
-                                        disabled
-                                        selected
-                                        value=''>
+                                    <option className='placeholder' value=''>
                                         Select state
                                     </option>
                                     {availableState.map((state) => (

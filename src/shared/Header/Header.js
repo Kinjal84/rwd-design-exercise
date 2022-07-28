@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 // import { renderIntoDocument } from 'react-dom/test-utils';
 import { FaBars, FaUser, FaTimes, FaHome, FaChartLine } from 'react-icons/fa';
 import Logo from '../../assets/images/logo.png';
@@ -45,6 +45,16 @@ const Header = () => {
             'Privacy Policy',
         ],
     };
+
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+        // isOpen && document.body.style.overflow = 'hidden';
+        // !isOpen && document.body.style.overflow = 'unset';
+    }, [isOpen]);
 
     return (
         <div className='main'>
