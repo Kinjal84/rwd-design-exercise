@@ -265,7 +265,7 @@ export default function Form() {
                             </div>
                             <p className='error'>
                                 {errors.state?.type === 'required' &&
-                                    'Country is required !'}
+                                    'State is required !'}
                             </p>
 
                             <div className='email-notification'>
