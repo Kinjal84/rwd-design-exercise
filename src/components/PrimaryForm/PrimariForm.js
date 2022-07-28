@@ -1,10 +1,13 @@
-import { React, useState } from 'react';
+import { React, useEffect, useState } from 'react';
 import '../PrimaryForm/PrimaryForm.scss';
 import { useForm } from 'react-hook-form';
 
 export default function Form() {
-    const [selectedCountry, setSelectedCountry] = useState('');
-    const [selectedState, setSelectedState] = useState();
+    const [selectedCountry, setSelectedCountry] = useState();
+    const [isOff, setIsOff] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
+    // const [countryId, setCountryId] = useState(null);
+
     const country = [
         {
             id: 1,
@@ -77,8 +80,13 @@ export default function Form() {
         },
     ];
 
+    useEffect(() => {
+        setIsOff(false);
+    }, [isOff]);
+
     const {
         register,
+
         formState: { errors },
         handleSubmit,
     } = useForm();
@@ -89,12 +97,17 @@ export default function Form() {
         e.target.reset();
     };
 
-    const handleChange = (event) => {
-        setSelectedCountry(event.target.value);
-
-        console.log(selectedCountry);
-        console.log(event.target.value);
+    const onChangeHandler = (event) => {
+        // const index = e.target.selectedIndex;
+        // const el = e.target.childNodes[index];
+        // const option = el.getAttribute('id');
+        const value = event.target.value;
+        console.log(value);
+        setSelectedCountry(value);
+        // console.log(selectedCountry);
+        // console.log(option);
     };
+    const availableState = State.filter((c) => c.country_id == selectedCountry);
 
     return (
         <div className='primary-form'>
@@ -102,7 +115,10 @@ export default function Form() {
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className='forms'>
                         <div className='form1'>
-                            <h3>Primary Form</h3>
+                            <div className='form-title'>
+                                <h3>Primary Form</h3>
+                            </div>
+
                             {/* <div className='form-control'> */}
                             <input
                                 placeholder='First Name'
@@ -113,12 +129,12 @@ export default function Form() {
                                     maxLength: 30,
                                 })}
                             />
-                            <error>
+                            <p className='error'>
                                 {errors.name?.type === 'required' &&
-                                    'Name is required'}
+                                    'Name is required !'}
                                 {errors.name?.type === 'minLength' &&
-                                    'Name should have at list 3 charactor'}
-                            </error>
+                                    'Name should have at list 3 charactor !'}
+                            </p>
                             {/* </div> */}
                             <input
                                 placeholder='Last Name'
@@ -129,38 +145,35 @@ export default function Form() {
                                     maxLength: 30,
                                 })}
                             />
-                            <error>
+                            <p className='error'>
                                 {errors.lname?.type === 'required' &&
-                                    'Last Name is required'}
+                                    'Last Name is required !'}
                                 {errors.lname?.type === 'minLength' &&
-                                    'Name should have at list 3 charactor'}
-                            </error>
+                                    'Name should have at list 3 charactor !'}
+                            </p>
                             <select
                                 {...register('country', { required: true })}
                                 className='form-control'
-                                onChange={handleChange}
-                                value={selectedCountry}
-                                id={selectedState}>
-                                {/* {country.map((country, key) => (
+                                onChange={onChangeHandler}>
                                 <option
-                                    id={country.id}
-                                    value={country.name}
-                                    key={key}
-                                    {...register('Country', {
-                                        required: true,
-                                    })}>
-                                    {country.name}
+                                    className='placeholder'
+                                    disabled
+                                    selected
+                                    value=''>
+                                    Select country
                                 </option>
-                            ))} */}
                                 {country.map((country) => (
                                     <option
-                                        value={country.name}
+                                        value={country.id}
                                         id={country.id}
                                         key={country.id}>
                                         {country.name}
                                     </option>
                                 ))}
                             </select>
+                            {errors.country && (
+                                <p className='error'>Country Required!</p>
+                            )}
                             <input
                                 placeholder='Email'
                                 className='form-control'
@@ -170,83 +183,149 @@ export default function Form() {
                                         /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/i,
                                 })}
                             />
-                            <error>
+                            <p className='error'>
                                 {errors.email?.type === 'required' &&
-                                    'Email is required'}
+                                    'Email is required !'}
                                 {errors.email?.type === 'pattern' &&
-                                    'Entered email is in wrong format'}
-                            </error>
+                                    'Entered email is in wrong format !'}
+                            </p>
                             <input
-                                type='digit'
+                                type='number'
                                 placeholder='Phone Number'
                                 className='form-control'
                                 {...register('number', {
+                                    required: true,
                                     minLength: 10,
                                     maxLength: 10,
                                 })}
                             />
-                            <error>
+                            <p className='error'>
+                                {errors.number?.type === 'required' &&
+                                    'Number is required !'}
                                 {errors.number?.type === 'minLength' &&
-                                    'Entered number is less than 10 digits'}
+                                    'Entered number is less than 10 digits !'}
                                 {errors.number?.type === 'maxLength' &&
-                                    'Entered number is more than 10 digits'}
-                            </error>
-                            <div className='gender'>
-                                <div className='radio-btn'>
-                                    <input
-                                        type='radio'
-                                        id='male'
-                                        name='gender'
-                                        value='male'
-                                        className='radio-input'
-                                        {...register('gender')}
-                                        checked
-                                    />
-                                    <label htmlFor='male'>Male</label>
-                                </div>
-                                <div className='radio-btn'>
-                                    <input
-                                        type='radio'
-                                        id='female'
-                                        name='gender'
-                                        value='female'
-                                        className='radio-input'
-                                        {...register('gender')}
-                                    />
-                                    <label htmlFor='female'>Female</label>
+                                    'Entered number is more than 10 digits !'}
+                            </p>
+                            <div className='gender-main'>
+                                <label htmlFor='gender'>Gender</label>
+                                <div className='gender'>
+                                    <div className='radio-btn'>
+                                        <input
+                                            type='radio'
+                                            id='male'
+                                            name='gender'
+                                            value={'male'}
+                                            defaultChecked
+                                            className='radio-input'
+                                            {...register('gender', {
+                                                required: true,
+                                            })}
+                                        />
+                                        <label htmlFor='male' id='male'>
+                                            Male
+                                        </label>
+                                    </div>
+                                    <div className='radio-btn'>
+                                        <input
+                                            type='radio'
+                                            id='female'
+                                            name='gender'
+                                            value='female'
+                                            className='radio-input'
+                                            {...register('gender', {
+                                                required: true,
+                                            })}
+                                        />
+                                        <label htmlFor='female' id='female'>
+                                            Female
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
-                            {/* {console.log(register[country]);}
-                        <select className='form-control'>
-                            {State.map((state, key) =>
-                                state.country_id === register.id ? (
-                                    <option
-                                        value={state.name}
-                                        key={key}
-                                        {...register('states', {
-                                            required: true,
-                                        })}>
-                                        {state.name}
-                                    </option>
-                                ) : null
-                            )}
-                        </select> */}
+                            <p className='error'>
+                                {errors.gender?.type === 'required' &&
+                                    'Number is required !'}
+                            </p>
                         </div>
-                        <div className='form2'>
-                            <h3>Secondary Form</h3>
-                            {/* <div className='form-control'> */}
-                            <select name='state' className='form-control'>
-                                {State.map((state) => (
-                                    <option value={state.name}>
-                                        {state.name}
+                        <div className='form1'>
+                            <div className='form-title'>
+                                <h3>Secondary Form</h3>
+                            </div>
+                            <div className='state'>
+                                <select
+                                    name='state'
+                                    className='form-control'
+                                    {...register('state', { required: true })}>
+                                    <option
+                                        className='placeholder'
+                                        disabled
+                                        selected
+                                        value=''>
+                                        Select state
                                     </option>
-                                ))}
-                            </select>
-                            {/* </div> */}
+                                    {availableState.map((state) => (
+                                        <option
+                                            value={state.name}
+                                            key={state.id}>
+                                            {state.name}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
+                            <p className='error'>
+                                {errors.state?.type === 'required' &&
+                                    'Country is required !'}
+                            </p>
+
+                            <div className='email-notification'>
+                                <label
+                                    htmlFor='email-notification'
+                                    className='toggle-label'>
+                                    Send email notification
+                                </label>
+                                <div>
+                                    <input
+                                        {...register('email-notification', {
+                                            required: true,
+                                        })}
+                                        className='switch'
+                                        type='checkbox'
+                                        name='email-notification'
+                                        defaultChecked
+                                        value={isOff}
+                                        onClick={() => {
+                                            setIsOff(!isOff);
+                                        }}
+                                    />
+                                </div>
+                            </div>
+                            <div className='email-notification'>
+                                <label
+                                    htmlFor='email-notification'
+                                    className='toggle-label'>
+                                    Send mobile notification
+                                </label>
+                                <div>
+                                    <input
+                                        {...register('mobile-notification', {
+                                            required: true,
+                                        })}
+                                        className='switch'
+                                        type='checkbox'
+                                        name='mobile-notification'
+                                        defaultChecked
+                                        value={isMobile}
+                                        onClick={() => setIsMobile(!isMobile)}
+                                    />
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div className='submit-btn'>
-                        <input className='button' type='submit' />
+                        <button className='button' type='submit'>
+                            submit
+                        </button>
                     </div>
                 </form>
             </div>

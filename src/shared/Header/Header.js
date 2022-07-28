@@ -3,12 +3,9 @@ import React, { useState } from 'react';
 import { FaBars, FaUser, FaTimes, FaHome, FaChartLine } from 'react-icons/fa';
 import Logo from '../../assets/images/logo.png';
 import '../../assets/styles/common.scss';
+import '../Header/Header.scss';
 
 const Header = () => {
-    const menu = () => {
-        console.log('hiii..');
-    };
-
     const [isOpen, setIsopen] = useState(false);
     const ToggleSidebar = () => {
         isOpen === true ? setIsopen(false) : setIsopen(true);
@@ -81,7 +78,9 @@ const Header = () => {
                         </ul>
                     </div>
                     <FaUser className='profile-icon' />
-                    <div className='sign-in'>Sign In</div>
+                    <div className='sign-in'>
+                        <p className='text'>Sign In</p>
+                    </div>
                 </div>
             </div>
             <div className={`sidebar ${isOpen == true ? 'active' : ''}`}>
@@ -103,7 +102,7 @@ const Header = () => {
                 </div>
                 <div className='services'>
                     <div className='services-list'>
-                        {headerLinks.services.map((service, key) => (
+                        {headerLinks.services.map((service) => (
                             <div className='link--list' key={service}>
                                 <div className='home-icon'>
                                     <FaHome />
@@ -121,7 +120,9 @@ const Header = () => {
                 </div>
                 <div className='others'>
                     {headerLinks.others.map((other) => (
-                        <div className='other-links'>{other}</div>
+                        <div className='other-links' key={other}>
+                            {other}
+                        </div>
                     ))}
                 </div>
             </div>

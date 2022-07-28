@@ -33,6 +33,7 @@ const Property = () => {
                 bedcount: '1-3',
                 bath: '1-3',
                 car: '1-2',
+                price: 'from $649,000',
             },
         ],
     };
@@ -45,7 +46,7 @@ const Property = () => {
                 </div>
                 <div className='card flex justify--content_space-between'>
                     {propertyDetails.information.map((info) => (
-                        <div className='property-img-details '>
+                        <div className='property-img-details ' key={info.title}>
                             <img
                                 src={info.img}
                                 alt='bedroom'
@@ -57,17 +58,20 @@ const Property = () => {
                                 <div className='property-address'>
                                     <p>{info.place}</p>
                                 </div>
-                                <div className='flex justify--content_space-between align--items_center'>
+                                <div className='property-address'>
+                                    <p>{info.price}</p>
+                                </div>
+                                <div className='property-detail-main flex justify--content_space-between align--items_center'>
                                     <div className='flex'>
-                                        <div className='property-small-intro p--10'>
+                                        <div className='property-small-intro'>
                                             <FaBed className='property-info-icons' />
                                             {info.bedcount}
                                         </div>
-                                        <div className='p--10 property-small-intro'>
+                                        <div className='property-small-intro'>
                                             <FaBath className='property-info-icons' />
                                             {info.bath}
                                         </div>
-                                        <div className='p--10 property-small-intro'>
+                                        <div className='property-small-intro'>
                                             <FaCar className='property-info-icons' />
                                             {info.car}
                                         </div>
