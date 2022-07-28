@@ -132,6 +132,8 @@ export default function Form() {
                                     'Name is required !'}
                                 {errors.name?.type === 'minLength' &&
                                     'Name should have at list 3 charactor !'}
+                                {errors.name?.type === 'maxLength' &&
+                                    'Name should have at most 30 charactor !'}
                             </p>
 
                             <input
@@ -147,7 +149,9 @@ export default function Form() {
                                 {errors.lname?.type === 'required' &&
                                     'Last Name is required !'}
                                 {errors.lname?.type === 'minLength' &&
-                                    'Name should have at list 3 charactor !'}
+                                    'Last name should have at list 3 charactor !'}
+                                {errors.lname?.type === 'maxLength' &&
+                                    'Last name should have at most 30 charactor !'}
                             </p>
                             <select
                                 {...register('country', { required: true })}
