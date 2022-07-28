@@ -59,7 +59,7 @@ const Header = () => {
     return (
         <div className='main'>
             <div className='header flex'>
-                <div className='inner-header flex'>
+                <div className='inner-header'>
                     <div
                         className={`${isOpen == true ? 'humburg-menu' : ''}`}
                         onClick={ToggleSidebar}>
@@ -77,7 +77,7 @@ const Header = () => {
                             alt='realestate logo'></img>
                     </div>
                     <div className='navbar'>
-                        <ul className='nav-links flex'>
+                        <ul className='nav-links'>
                             {headerLinks.links.map((link, key) => (
                                 <li
                                     className='li--style-none navigation-links'
@@ -94,7 +94,7 @@ const Header = () => {
                 </div>
             </div>
             <div className={`sidebar ${isOpen == true ? 'active' : ''}`}>
-                <div className='inner-header flex'>
+                <div className='inner-header'>
                     <div className='btn btn-primary' onClick={ToggleSidebar}>
                         <FaTimes
                             className='close-btn'
