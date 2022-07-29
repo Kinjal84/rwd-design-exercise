@@ -183,7 +183,7 @@ export default function Form() {
                                 {errors.email?.type === 'required' &&
                                     'Email is required !'}
                                 {errors.email?.type === 'pattern' &&
-                                    'Entered email is in wrong format !'}
+                                    'Email is in wrong format !'}
                             </p>
                             <input
                                 type='number'
@@ -199,9 +199,9 @@ export default function Form() {
                                 {errors.number?.type === 'required' &&
                                     'Number is required !'}
                                 {errors.number?.type === 'minLength' &&
-                                    'Entered number is less than 10 digits !'}
+                                    'Phone number is less than 10 digits !'}
                                 {errors.number?.type === 'maxLength' &&
-                                    'Entered number is more than 10 digits !'}
+                                    'Phone number is more than 10 digits !'}
                             </p>
                             <div className='gender-main'>
                                 <label htmlFor='gender'>Gender</label>
@@ -278,17 +278,11 @@ export default function Form() {
                                 </label>
                                 <div>
                                     <input
-                                        {...register('email-notification', {
-                                            required: true,
-                                        })}
+                                        {...register('email-notification')}
                                         className='switch'
                                         type='checkbox'
                                         name='email-notification'
                                         defaultChecked
-                                        value={isOff}
-                                        onClick={() => {
-                                            setIsOff(!isOff);
-                                        }}
                                     />
                                 </div>
                             </div>
@@ -300,15 +294,11 @@ export default function Form() {
                                 </label>
                                 <div>
                                     <input
-                                        {...register('mobile-notification', {
-                                            required: true,
-                                        })}
+                                        {...register('mobile-notification')}
                                         className='switch'
                                         type='checkbox'
                                         name='mobile-notification'
                                         defaultChecked
-                                        value={isMobile}
-                                        onClick={() => setIsMobile(!isMobile)}
                                     />
                                 </div>
                             </div>

@@ -110,30 +110,36 @@ const Header = () => {
                     </div>
                     <FaUser className='profile-icon' />
                 </div>
-                <div className='services'>
-                    <div className='services-list'>
-                        {headerLinks.services.map((service) => (
-                            <div className='link--list' key={service}>
-                                <div className='home-icon'>
-                                    <FaHome />
+                <div className='sidebar-scroll'>
+                    <div className='services'>
+                        <div className='services-list'>
+                            {headerLinks.services.map((service) => (
+                                <div className='link--list' key={service}>
+                                    <div className='home-icon'>
+                                        <FaHome />
+                                    </div>
+                                    <div className='service-name'>
+                                        {service}
+                                    </div>
                                 </div>
-                                <div className='service-name'>{service}</div>
+                            ))}
+                        </div>
+                        <div className='link--list'>
+                            <div className='home-icon'>
+                                <FaChartLine />
+                            </div>
+                            <div className='service-name'>
+                                {headerLinks.price}
+                            </div>
+                        </div>
+                    </div>
+                    <div className='others'>
+                        {headerLinks.others.map((other) => (
+                            <div className='other-links' key={other}>
+                                {other}
                             </div>
                         ))}
                     </div>
-                    <div className='link--list'>
-                        <div className='home-icon'>
-                            <FaChartLine />
-                        </div>
-                        <div className='service-name'>{headerLinks.price}</div>
-                    </div>
-                </div>
-                <div className='others'>
-                    {headerLinks.others.map((other) => (
-                        <div className='other-links' key={other}>
-                            {other}
-                        </div>
-                    ))}
                 </div>
             </div>
         </div>
